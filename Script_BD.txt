@@ -3,84 +3,47 @@ create database sgar;
 use sgar;
 
  create table organizacao(
- id int(9) primary key not null AUTO_INCREMENT,
- nome varchar(64) not null,
- rua varchar(32)not null,
- bairro varchar(32) not null,
- cidade varchar(32) not null,
- cep varchar(8) not null,
- estado varchar(32) not null,
- referencia varchar(64),
- telefone varchar(11) not null,
- tipo char not null
- );
- 
- create table usuario (
- id int(9) primary key not null AUTO_INCREMENT,
- matricula varchar(24), 
- organizacao int(9) not null,
- nome varchar(32) not null,
- datanascimento date not null,
- cpf varchar(11) not null,
- email varchar(64) not null,
- telefone varchar(11) not null,
- senha varchar(32) not null,
- sexo char not null,
- tipo char not null,
- );
- 
- create table evento (
- id int(9) primary key not null AUTO_INCREMENT,
- nome varchar(32) not null,
- data date,
- local varchar(64) not null,
- horario time not null,
- realizada bool not null,
- descricao varchar(255) not null
- );
- 
-  create table participante (
- id int(9) primary key not null AUTO_INCREMENT,
- participante int(9) not null,
- evento int(9) not null,
- presenca int(9) not null
- );
- 
- create table presenca (
- id int(9) primary key not null AUTO_INCREMENT,
- presenca bool not null,
- justificada bool not null
- );
+id int NOT NULL PRIMARY KEY ,
+rua varchar(64) NOT NULL,
+bairro varchar(64) NOT NULL,
+cidade varchar(64) NOT NULL,
+cep varchar(9) NOT NULL,
+estado varchar(64) NOT NULL,
+referencia varchar(64),
+tipo char NOT NULL
+);
 
-ALTER TABLE `sgar`.`usuario` 
-ADD INDEX `organizacao_idx` (`organizacao` ASC);
-;
-ALTER TABLE `sgar`.`usuario` 
-ADD CONSTRAINT `organizacao`
-  FOREIGN KEY (`organizacao`)
-  REFERENCES `sgar`.`organizacao` (`id`)
-  ON DELETE NO ACTION
-  ON UPDATE NO ACTION;
+create table usuario(
+id int NOT NULL PRIMARY KEY, 
+organizacao int NOT NULL,
+nome varchar(64) NOT NULL,
+datanascimento date NOT NULL,
+cpf varchar(11) NOT NULL,
+senha varchar(64) NOT NULL,
+sexo char NOT NULL,
+tipo char NOT NULL
+);
 
-  ALTER TABLE `sgar`.`participante` 
-ADD INDEX `participante_idx` (`participante` ASC),
-ADD INDEX `evento_idx` (`evento` ASC),
-ADD INDEX `presenca_idx` (`presenca` ASC);
-;
-ALTER TABLE `sgar`.`participante` 
-ADD CONSTRAINT `participante`
-  FOREIGN KEY (`participante`)
-  REFERENCES `sgar`.`usuario` (`id`)
-  ON DELETE NO ACTION
-  ON UPDATE NO ACTION,
-ADD CONSTRAINT `evento`
-  FOREIGN KEY (`evento`)
-  REFERENCES `sgar`.`evento` (`id`)
-  ON DELETE NO ACTION
-  ON UPDATE NO ACTION,
-ADD CONSTRAINT `presenca`
-  FOREIGN KEY (`presenca`)
-  REFERENCES `sgar`.`presenca` (`id`)
-  ON DELETE NO ACTION
-  ON UPDATE NO ACTION;
+create table evento(
+id int PRIMARY KEY NOT NULL,
+nome varchar(64) NOT NULL,
+datarealizacao date NOT NULL,
+localizacaorealizacao varchar(64) NOT NULL,
+horario time NOT NULL,
+realizado char NOT NULL,
+descricao varchar(255)
+);
+
+create table presenca(
+id int PRIMARY KEY NOT NULL,
+evento int NOT NULL,
+presenca char NOT NULL,
+justificada char NOT NULL
+);
+
+create table realizacao(
+id int PRIMARY KEY NOT NULL,
+participante int NOT NULL,
+evento int NOT NULL,
+);
 
