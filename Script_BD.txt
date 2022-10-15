@@ -3,7 +3,7 @@ create database sgar;
 use sgar;
 
  create table organizacao(
-id int IDENTITY(1,1) PRIMARY KEY ,
+id int IDENTITY(1,1) PRIMARY KEY,
 rua varchar(64) NOT NULL,
 bairro varchar(64) NOT NULL,
 cidade varchar(64) NOT NULL,
