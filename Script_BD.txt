@@ -3,7 +3,7 @@ create database sgar;
 use sgar;
 
  create table organizacao(
-id int NOT NULL PRIMARY KEY ,
+id int IDENTITY(1,1) PRIMARY KEY ,
 rua varchar(64) NOT NULL,
 bairro varchar(64) NOT NULL,
 cidade varchar(64) NOT NULL,
@@ -14,7 +14,7 @@ tipo char NOT NULL
 );
 
 create table usuario(
-id int NOT NULL PRIMARY KEY, 
+id int IDENTITY(1,1) PRIMARY KEY, 
 organizacao int NOT NULL,
 nome varchar(64) NOT NULL,
 datanascimento date NOT NULL,
@@ -25,7 +25,7 @@ tipo char NOT NULL
 );
 
 create table evento(
-id int PRIMARY KEY NOT NULL,
+id int IDENTITY(1,1) NOT NULL,
 nome varchar(64) NOT NULL,
 datarealizacao date NOT NULL,
 localizacaorealizacao varchar(64) NOT NULL,
@@ -35,14 +35,14 @@ descricao varchar(255)
 );
 
 create table presenca(
-id int PRIMARY KEY NOT NULL,
+id int IDENTITY(1,1) PRIMARY KEY,
 evento int NOT NULL,
 presenca char NOT NULL,
 justificada char NOT NULL
 );
 
 create table realizacao(
-id int PRIMARY KEY NOT NULL,
+id int  IDENTITY(1,1) PRIMARY KEY
 participante int NOT NULL,
 evento int NOT NULL,
 );
