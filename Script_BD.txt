@@ -30,7 +30,7 @@ tipo char NOT NULL
 );
 
 create table evento(
-id int IDENTITY(1,1) NOT NULL,
+id int IDENTITY(1,1) NOT NULL PRIMARY KEY,
 nome varchar(64) NOT NULL,
 datarealizacao date NOT NULL,
 localizacaorealizacao varchar(64) NOT NULL,
