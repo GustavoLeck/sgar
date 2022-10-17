@@ -30,6 +30,7 @@ tipo char NOT NULL
 
 create table evento(
 id int IDENTITY(1,1) NOT NULL PRIMARY KEY,
+organizacao int NOT NULL,
 nome varchar(64) NOT NULL,
 datarealizacao date NOT NULL,
 localizacaorealizacao varchar(64) NOT NULL,
@@ -41,12 +42,15 @@ descricao varchar(255)
 create table presenca(
 id int IDENTITY(1,1) PRIMARY KEY,
 evento int NOT NULL,
+participante int NOT NULL,
 presenca char NOT NULL,
 justificada char NOT NULL
 );
 
-create table realizacao(
-id int  IDENTITY(1,1) PRIMARY KEY,
-participante int NOT NULL,
-evento int NOT NULL,
-);
+
+use sgar; 
+insert into organizacao (rua, bairro, cidade, estado, cep, email, telefone, tipo)
+		values('rua joaquim garcia s/n', 'centro', 'camboriu', 'santa catarina', '88340055', 'gabinete.camobriu@ifc.edu.br', '047021040800', '1');
+
+insert into organizacao (rua, bairro, cidade, estado, cep, email, telefone, tipo)
+		values('br-280', 'centro', 'araquari', 'santa catarina', '89245000', 'gabinete.araquari@ifc.edu.br', '047038037200', '1')
