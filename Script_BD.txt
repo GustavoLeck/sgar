@@ -8,6 +8,8 @@ rua varchar(64) NOT NULL,
 bairro varchar(64) NOT NULL,
 cidade varchar(64) NOT NULL,
 cep varchar(9) NOT NULL,
+telefone varchar(12)NOT NULL,
+senha varchar(64) NOT NULL,
 estado varchar(64) NOT NULL,
 referencia varchar(64),
 tipo char NOT NULL
@@ -19,6 +21,8 @@ organizacao int NOT NULL,
 nome varchar(64) NOT NULL,
 datanascimento date NOT NULL,
 cpf varchar(11) NOT NULL,
+email varchar(64) NOT NULL,
+telefone varchar(12)NOT NULL,
 senha varchar(64) NOT NULL,
 sexo char NOT NULL,
 tipo char NOT NULL
@@ -46,4 +50,3 @@ id int  IDENTITY(1,1) PRIMARY KEY
 participante int NOT NULL,
 evento int NOT NULL,
 );
-
